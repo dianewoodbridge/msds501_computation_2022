@@ -1,0 +1,8 @@
+before print_all()
+===============
+0
+MSDS 501 - Computation for Analytics
+===============
+1
+MSDS 504 - Review Probability and Stats
+after print_all()
