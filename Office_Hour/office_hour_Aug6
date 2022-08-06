@@ -1,0 +1,104 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "87f08d5d-2f6b-44d1-9939-3b73507dd6c0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "file_name = 'epa_air_quality.csv'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "504ae401-9687-4ac7-a146-f90781e92c4e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "with open(file_name,'r') as file:\n",
+    "    file.readline()\n",
+    "    lines = file.readlines()\n",
+    "    data = []\n",
+    "    for line in lines:\n",
+    "        line = line.strip().split(',')\n",
+    "        data.append([int(line[2]), \n",
+    "                     int(line[3])])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "486d2ff1-0296-4036-9f83-7c292d64dce3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import pickle\n",
+    "with open('cleaned_data.pickle', 'wb') as file:\n",
+    "     pickle.dump(data, file)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "de40fde5-d18f-45a2-be5b-6ec067c1f565",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "with open('cleaned_data.pickle', 'rb') as file:\n",
+    "    data2 = pickle.load(file)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "id": "e76127a7-a27c-4329-bd5f-8b00373813ef",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "True"
+      ]
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "data == data2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "731eb5ec-b820-480f-8bff-b70d4d4d147c",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.12"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
